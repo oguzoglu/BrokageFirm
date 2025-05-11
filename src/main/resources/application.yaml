@@ -1,0 +1,18 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: BrokageFirm
+  datasource:
+    url: jdbc:postgresql://${db_host:localhost}:${db_port:5432}/${db_name:brokagefirmdb}
+    username: ${db_username:postgres}
+    password: ${db_password:mypassword}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: ${ddl_auto:update}
+security:
+  jwt:
+    key: ${jwt_secret:my_secret_c9063ab7k4kl6d6de3dg894if34tyc3b9d2u2hg7n4b6m9d1lf7jd8}
+    expTime: 3600000

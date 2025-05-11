@@ -1,0 +1,61 @@
+### Login User
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "Omer",
+  "password": "user123"
+}
+> {% client.global.set("token", response.body.token); %}
+
+### Login admin
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+> {% client.global.set("token", response.body.token); %}
+
+### get assets
+GET http://localhost:8080/api/assets?customerId=1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+
+### create order
+POST http://localhost:8080/api/orders/create
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "customerId": 1,
+  "assetName": "A",
+  "size": 5,
+  "orderSide": "SELL",
+  "price": 3
+}
+
+### list orders by customrt id Omer user
+GET http://localhost:8080/api/orders?customerId=1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+### list orders
+GET http://localhost:8080/api/orders/listAll
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+
+### cancel order
+GET http://localhost:8080/api/orders/cancel/1/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+### match order
+GET http://localhost:8080/api/orders/match/9
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+
